@@ -3,7 +3,4 @@ This untitled react project is aiming to provide a clear, organized visual to he
 
 Continued development will bring:
 
--Authentication
--Emailed or pushed notifications for upcoming bills or transactions
--Budgetor
--automated analytics (direct input from connected bank account)
+-Authentication, emailed or pushed notifications for upcoming bills or transactions, budgetor, automated analytics (direct input from connected bank account)
