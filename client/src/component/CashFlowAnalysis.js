@@ -16,6 +16,7 @@ class CashflowAnalysis extends React.Component {
         this.chartReference = React.createRef();
     }
     componentDidMount() {
+        console.log(this.chartReference);
         this.getData();
         // this.dates = this.getDates();
         // this.buildGraph();

@@ -14,7 +14,7 @@ class Nav extends React.Component {
     render() {
         const styles = {
             nav: {
-                backgroundColor: "#7697a0",
+                backgroundColor: "gray",
                 borderBottom: "1px solid #000000",
             }
 
@@ -24,11 +24,13 @@ class Nav extends React.Component {
             <div >
                 <nav className="navbar navbar-expand-lg navbar-light" style={styles.nav}>
                     <a className="navbar-brand" href="#">
-                        <img src="/images/isThisANavbar.jpg"
+                        <img src=""
                             width="70"
                             height="60"
                             className="d-inline-block align-top"
-                            loading="lazy">
+                            loading="lazy"
+                            alt="LOGO"
+                        >
 
                         </img>
                     </a>

@@ -2,7 +2,7 @@ import React from "react";
 
 const styles = {
     style: {
-        backgroundColor: "#7697a0",
+        backgroundColor: "grey",
         borderTop: "1px solid #000000",
         textAlign: "center",
         padding: "20px",
