@@ -83,27 +83,37 @@ class TransactionEntryForm extends Component {
             startDate: this.state.startDate,
             endDate: this.state.endDate,
         })
+        console.log(this.state)
         this.toggleModal();
-
+        this.setState({
+            name: "",
+            dollarAmt: "",
+            income: false,
+            reoccuring: false,
+            category: 0,
+            startDate: new Date(),
+            endDate: new Date(),
+        })
     };
+
     render() {
         return (
             <div>
                 {this.state.modalHover ?
                     <svg className="bi bi-plus-circle-fill"
-                        width="25%"
-                        height="25%"
+                        width="63%"
+                        height="63%"
                         viewBox="0 0 16 16"
-                        fill="#000000"
+                        fill="orange"
                         xmlns="http://www.w3.org/2000/svg"
                         onClick={this.toggleModal}
                         onMouseLeave={this.toggleHover}>
                         <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z" />
                     </svg> : <svg className="bi bi-plus-circle-fill"
-                        width="25%"
-                        height="25%"
+                        width="63%"
+                        height="63%"
                         viewBox="0 0 16 16"
-                        fill="#7697a0"
+                        fill="#48c0c0"
                         xmlns="http://www.w3.org/2000/svg"
                         onClick={this.toggleModal}
                         onMouseEnter={this.toggleHover}>
@@ -161,13 +171,13 @@ class TransactionEntryForm extends Component {
                                             selected={this.state.startDate}
                                             customInput={
                                                 <span>
-                                                    <svg class="bi bi-calendar-date-fill"
+                                                    <svg className="bi bi-calendar-date-fill"
                                                         width="7%"
                                                         height="7%"
                                                         viewBox="0 0 16 16"
                                                         fill="currentColor"
                                                         xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM0 5h16v9a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5zm9.336 7.79c-1.11 0-1.656-.767-1.703-1.407h.683c.043.37.387.82 1.051.82.844 0 1.301-.848 1.305-2.164h-.027c-.153.414-.637.79-1.383.79-.852 0-1.676-.61-1.676-1.77 0-1.137.871-1.809 1.797-1.809 1.172 0 1.953.734 1.953 2.668 0 1.805-.742 2.871-2 2.871zm.066-2.544c.625 0 1.184-.484 1.184-1.18 0-.832-.527-1.23-1.16-1.23-.586 0-1.168.387-1.168 1.21 0 .817.543 1.2 1.144 1.2zm-2.957-2.89v5.332H5.77v-4.61h-.012c-.29.156-.883.52-1.258.777V8.16a12.6 12.6 0 0 1 1.313-.805h.632z" />
+                                                        <path fillRule="evenodd" d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM0 5h16v9a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5zm9.336 7.79c-1.11 0-1.656-.767-1.703-1.407h.683c.043.37.387.82 1.051.82.844 0 1.301-.848 1.305-2.164h-.027c-.153.414-.637.79-1.383.79-.852 0-1.676-.61-1.676-1.77 0-1.137.871-1.809 1.797-1.809 1.172 0 1.953.734 1.953 2.668 0 1.805-.742 2.871-2 2.871zm.066-2.544c.625 0 1.184-.484 1.184-1.18 0-.832-.527-1.23-1.16-1.23-.586 0-1.168.387-1.168 1.21 0 .817.543 1.2 1.144 1.2zm-2.957-2.89v5.332H5.77v-4.61h-.012c-.29.156-.883.52-1.258.777V8.16a12.6 12.6 0 0 1 1.313-.805h.632z" />
                                                     </svg>
                                                     {`   ` + this.state.startDate.toDateString()}
                                                 </span>
@@ -185,7 +195,7 @@ class TransactionEntryForm extends Component {
                                                 selected={this.state.endDate}
                                                 customInput={
                                                     <span>
-                                                        <svg class="bi bi-calendar-date-fill"
+                                                        <svg className="bi bi-calendar-date-fill"
                                                             width="7%"
                                                             height="7%"
                                                             viewBox="0 0 16 16"
@@ -201,7 +211,7 @@ class TransactionEntryForm extends Component {
                                     }
                                     <Button variant="primary" type="submit" onClick={this.handleSubmit} className="mt-3">
                                         Submit
-                                 </Button>
+                                   </Button>
                                 </Form>
                             </Col>
                         </Row>
