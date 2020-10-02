@@ -5,12 +5,14 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import TransactionEntryForm from "./TransactionEntryForm";
-import "./Stylesheet.css";
+import "./MainChartHooks.css";
 
 function MainChartHooks(props) {
   const [transactionData, setTransactionData] = useState([]);
   const [chartData, setChartData] = useState({});
   const [pageCount, setPageCount] = useState(0);
+  const [paginationTab, setPaginationTab] = useState(0);
+  const [itemsToShow] = useState(4);
   const paginationButtons = Array.from(Array(pageCount), (i, x) => x);
   const chart = () => {
     setChartData({
@@ -24,6 +26,15 @@ function MainChartHooks(props) {
         },
       ],
     });
+  };
+  const handlePagClick = (tabNumber) => {
+    setPaginationTab(tabNumber);
+  };
+  const handlePagination = () => {
+    return transactionData.slice(
+      paginationTab * 4,
+      paginationTab * 4 + itemsToShow
+    );
   };
   const getData = () => {
     let apiResultsArray = [];
@@ -39,60 +50,14 @@ function MainChartHooks(props) {
   useEffect(() => {
     getData();
     chart();
-    console.log(pageCount);
-    console.log(transactionData);
+    
   }, [transactionData]);
-  const styles = {
-    bgContainer: {
-      backgroundImage: "linear-gradient(to top, #55596f,#303343, #272938)",
-      backgroundPosition: "center",
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      minHeight: "100%",
-    },
-    transactionListWrapper: {
-      display: "block",
-      width: "100%",
-      margin: "auto",
-      marginBottom: "4%",
-      marginTop: "2%",
-      height: "400px",
-      overflow: "auto",
-      backgroundColor: "#191927",
-      borderRadius: "1%",
-    },
-    transactionList: {
-      listStyleType: "none",
-      padding: "0",
-    },
-    transactionListItems: {
-      padding: "3%",
-      borderBottom: "2px solid black",
-      width: "100%",
-      textAlign: "center",
-      color: "#48c0c0",
-    },
-    mainContentWrapper: {
-      paddingTop: "3%",
-      paddingBottom: "3%",
-    },
-    mainContentArea: {
-      backgroundColor: "#191927",
-      borderRadius: "1%",
-    },
-    paginationDiv: {
-      padding: "3%",
-      textAlign: "center",
-    },
-    transLi: {
-      fontColor: "#48c0c0",
-    },
-  };
+
   return (
-    <div style={styles.bgContainer}>
+    <div className="background-container">
       <Container>
-        <div style={styles.mainContentWrapper}>
-          <Row style={styles.mainContentArea}>
+        <div className="main-content-wrapper">
+          <Row className="main-content-area">
             <Col md={11}>
               <div className="mt-5">
                 <h3 className="text-center" style={{ color: "#48c0c0" }}>
@@ -141,11 +106,11 @@ function MainChartHooks(props) {
             </Col>
           </Row>
 
-          <div style={styles.transactionListWrapper}>
-            <ul className="mt-2" style={styles.transactionList}>
-              {transactionData.map((item) => (
-                <li style={styles.transactionListItems} key={item.id}>
-                  <span style={styles.transLi}>
+          <div className="transaction-list-wrapper">
+            <ul className="mt-2" className="transaction-list">
+              {handlePagination().map((item, i) => (
+                <li className="transaction-list-items" key={i}>
+                  <span className="transaction-li">
                     {item.startDate} | {item.name} |{" "}
                     {item.income ? "+ $" : "- $"}
                     {item.dollarAmt}
@@ -155,23 +120,21 @@ function MainChartHooks(props) {
             </ul>
           </div>
 
-          <div style={styles.paginationDiv}>
-            <ul className="pagination">
-              <li className="page-item">
-                <a className="page-link">Previous</a>
-              </li>
-              {paginationButtons.map((page) => {
+          <div className="pagination-wrapper">
+            <div className="pagination">
+              {paginationButtons.map((tabNumber) => {
                 return (
-                  <li className="page-item">
-                    <a className="page-link">{page + 1}</a>
-                  </li>
+                  <button
+                    className="pagination-buttons"
+                    href="#"
+                    key={tabNumber}
+                    onClick={() => handlePagClick(tabNumber)}
+                  >
+                    {tabNumber + 1}
+                  </button>
                 );
               })}
-
-              <li className="page-item">
-                <a className="page-link">Next</a>
-              </li>
-            </ul>
+            </div>
           </div>
         </div>
       </Container>

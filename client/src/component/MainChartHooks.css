@@ -1,0 +1,77 @@
+div {
+  -ms-overflow-style: none;
+}
+div::-webkit-scrollbar {
+  display: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-buttons {
+  color: #05386b;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border-radius: 4px;
+  border: 1px solid #05386b;
+  margin-right: 0.5%;
+  background-color: transparent;
+}
+
+.pagination button:hover:not(.active) {
+  background-color: #05386b;
+  color: #edf5e1;
+}
+.pagination button:active {
+  background-color: #05386b;
+  color: #edf5e1;
+}
+.pagination-wrapper {
+  text-align: center;
+}
+.background-container {
+  background-image: linear-gradient(to top, #55596f, #303343, #272938);
+  background-position: "center";
+  background-size: "cover";
+  background-repeat: "no-repeat";
+  min-height: 100%;
+}
+
+.transaction-list-wrapper {
+  display: block;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 4%;
+  margin-top: 2%;
+  height: 400px;
+  overflow: auto;
+  background-color: #191927;
+  border-radius: 1%;
+}
+
+.transaction-list {
+  list-style-type: none;
+  padding: "0";
+}
+.transaction-list-items {
+  padding: 3%;
+  border-bottom: 2px solid black;
+  width: 100%;
+  text-align: "center";
+  color: #48c0c0;
+}
+.main-content-wrapper {
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+.main-content-area {
+  background-color: #191927;
+  border-radius: 1%;
+}
+.transaction-Li {
+  color: #48c0c0;
+}
