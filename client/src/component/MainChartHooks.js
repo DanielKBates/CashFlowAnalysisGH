@@ -50,7 +50,6 @@ function MainChartHooks(props) {
   useEffect(() => {
     getData();
     chart();
-    
   }, [transactionData]);
 
   return (
@@ -107,7 +106,7 @@ function MainChartHooks(props) {
           </Row>
 
           <div className="transaction-list-wrapper">
-            <ul className="mt-2" className="transaction-list">
+            <ul className="transaction-list mt-2">
               {handlePagination().map((item, i) => (
                 <li className="transaction-list-items" key={i}>
                   <span className="transaction-li">
