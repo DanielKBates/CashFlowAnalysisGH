@@ -8,6 +8,7 @@ module.exports = {
     },
     getAllData: function (req, res) {
         db.Transaction 
+            .find()
             .sort({startDate: -1})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
