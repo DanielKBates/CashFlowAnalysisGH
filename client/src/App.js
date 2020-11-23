@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import CashFlowAnalysis from './component/CashFlowAnalysis';
-import MainChartHooks from "./component/MainChartHooks";
-import Nav from "./component/Navbar";
+import MainChartHooks from "./component/MainChartHooks/MainChartHooks";
+import Nav from "./component/Nav";
 import Footer from "./component/Footer";
 
 

@@ -1,0 +1,25 @@
+.transaction-list-wrapper {
+    background-color: #191927;
+    border-radius: 2%;
+    margin-left: 4%
+  
+  }
+  
+  .transaction-li {
+    color: #48c0c0;
+    justify-content: center;
+  
+  }
+  .transaction-list {
+    
+    list-style-type: none;
+    padding: 3% 3%;
+  
+  }
+  .transaction-list-items {
+    padding: 3%;
+    border-bottom: 2px solid black;
+    width: 100%;
+    text-align: "center";
+    color: #48c0c0;
+  }

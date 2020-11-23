@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
-import API from "../utils/API";
+import API from "../../utils/API";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import TransactionEntryForm from "./TransactionEntryForm";
+import TransactionEntryForm from "../TransactionEntryForm/TransactionEntryForm";
+import TransactionList from "../TransactionList/TransactionList";
 import "./MainChartHooks.css";
 
 function MainChartHooks(props) {
   const [transactionData, setTransactionData] = useState([]);
   const [chartData, setChartData] = useState({});
-  const [pageCount, setPageCount] = useState(0);
-  const [paginationTab, setPaginationTab] = useState(0);
-  const [itemsToShow] = useState(4);
-  const paginationButtons = Array.from(Array(pageCount), (i, x) => x);
+
   const chart = () => {
     setChartData({
       labels: ["1", "2", "3", "4", "5", "6", "7"],
@@ -27,15 +25,7 @@ function MainChartHooks(props) {
       ],
     });
   };
-  const handlePagClick = (tabNumber) => {
-    setPaginationTab(tabNumber);
-  };
-  const handlePagination = () => {
-    return transactionData.slice(
-      paginationTab * 4,
-      paginationTab * 4 + itemsToShow
-    );
-  };
+ 
   const getData = () => {
     let apiResultsArray = [];
     API.getTransactionData().then((res) => {
@@ -44,9 +34,9 @@ function MainChartHooks(props) {
       }
       apiResultsArray.sort((a, b) => a.startDate - b.startDate);
       setTransactionData(apiResultsArray);
-      setPageCount(Math.ceil(transactionData.length / 4));
     });
   };
+ 
   useEffect(() => {
     getData();
     chart();
@@ -55,7 +45,7 @@ function MainChartHooks(props) {
   return (
     <div className="background-container">
       <Container className="main-content-wrapper">
-        <Row className="main-content-area">
+        <Row className="chart-row">
           <Col md={11}>
             <div className="mt-5">
               <h3 className="text-center" style={{ color: "#48c0c0" }}>
@@ -103,40 +93,11 @@ function MainChartHooks(props) {
             </div>
           </Col>
         </Row>
-        <Row className="main-content-area">
-          <Col md={12}>
-            <div className="transaction-list-wrapper">
-              <ul className="transaction-list mt-2">
-                {handlePagination().map((item, i) => (
-                  <li className="transaction-list-items" key={i}>
-                    <span className="transaction-li">
-                      {item.startDate} | {item.name} |{" "}
-                      {item.income ? "+ $" : "- $"}
-                      {item.dollarAmt}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <Row className="list-row">
+          <Col md={6}>
+            <TransactionList transactions={transactionData} />
           </Col>
         </Row>
-
-        <div className="pagination-wrapper">
-          <div className="pagination">
-            {paginationButtons.map((tabNumber) => {
-              return (
-                <button
-                  className="pagination-buttons"
-                  href="#"
-                  key={tabNumber}
-                  onClick={() => handlePagClick(tabNumber)}
-                >
-                  {tabNumber + 1}
-                </button>
-              );
-            })}
-          </div>
-        </div>
       </Container>
     </div>
   );
