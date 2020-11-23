@@ -14,7 +14,7 @@ class Nav extends React.Component {
     render() {
         const styles = {
             nav: {
-                backgroundColor: "gray",
+                backgroundColor: "#48c0c0",
                 borderBottom: "1px solid #000000",
             }
 

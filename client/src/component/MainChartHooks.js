@@ -54,86 +54,87 @@ function MainChartHooks(props) {
 
   return (
     <div className="background-container">
-      <Container>
-        <div className="main-content-wrapper">
-          <Row className="main-content-area">
-            <Col md={11}>
-              <div className="mt-5">
-                <h3 className="text-center" style={{ color: "#48c0c0" }}>
-                  Future Cashflows
-                </h3>
-                <Line
-                  data={chartData}
-                  options={{
-                    responsive: true,
-                    legend: {
-                      labels: {
-                        fontColor: "#48c0c0",
+      <Container className="main-content-wrapper">
+        <Row className="main-content-area">
+          <Col md={11}>
+            <div className="mt-5">
+              <h3 className="text-center" style={{ color: "#48c0c0" }}>
+                Future Cashflows
+              </h3>
+              <Line
+                data={chartData}
+                options={{
+                  responsive: true,
+                  legend: {
+                    labels: {
+                      fontColor: "#48c0c0",
+                    },
+                  },
+                  title: { text: "$$$", display: true, fontColor: "#48c0c0" },
+                  scales: {
+                    yAxes: [
+                      {
+                        ticks: {
+                          autoSkip: true,
+                          maxTicksLimit: 10,
+                          beginAtZero: true,
+                          fontColor: "#48c0c0",
+                        },
                       },
-                    },
-                    title: { text: "$$$", display: true, fontColor: "#48c0c0" },
-                    scales: {
-                      yAxes: [
-                        {
-                          ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 10,
-                            beginAtZero: true,
-                            fontColor: "#48c0c0",
-                          },
+                    ],
+                    xAxes: [
+                      {
+                        ticks: {
+                          autoSkip: true,
+                          maxTicksLimit: 10,
+                          beginAtZero: true,
+                          fontColor: "#48c0c0",
                         },
-                      ],
-                      xAxes: [
-                        {
-                          ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 10,
-                            beginAtZero: true,
-                            fontColor: "#48c0c0",
-                          },
-                        },
-                      ],
-                    },
-                  }}
-                />
-              </div>
-            </Col>
-            <Col md={1}>
-              <div className="mt-5 p-0">
-                <TransactionEntryForm />
-              </div>
-            </Col>
-          </Row>
-
-          <div className="transaction-list-wrapper">
-            <ul className="transaction-list mt-2">
-              {handlePagination().map((item, i) => (
-                <li className="transaction-list-items" key={i}>
-                  <span className="transaction-li">
-                    {item.startDate} | {item.name} |{" "}
-                    {item.income ? "+ $" : "- $"}
-                    {item.dollarAmt}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="pagination-wrapper">
-            <div className="pagination">
-              {paginationButtons.map((tabNumber) => {
-                return (
-                  <button
-                    className="pagination-buttons"
-                    href="#"
-                    key={tabNumber}
-                    onClick={() => handlePagClick(tabNumber)}
-                  >
-                    {tabNumber + 1}
-                  </button>
-                );
-              })}
+                      },
+                    ],
+                  },
+                }}
+              />
             </div>
+          </Col>
+          <Col md={1}>
+            <div className="mt-5 p-0">
+              <TransactionEntryForm />
+            </div>
+          </Col>
+        </Row>
+        <Row className="main-content-area">
+          <Col md={12}>
+            <div className="transaction-list-wrapper">
+              <ul className="transaction-list mt-2">
+                {handlePagination().map((item, i) => (
+                  <li className="transaction-list-items" key={i}>
+                    <span className="transaction-li">
+                      {item.startDate} | {item.name} |{" "}
+                      {item.income ? "+ $" : "- $"}
+                      {item.dollarAmt}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Col>
+        </Row>
+
+        <div className="pagination-wrapper">
+          <div className="pagination">
+            {paginationButtons.map((tabNumber) => {
+              return (
+                <button
+                  className="pagination-buttons"
+                  href="#"
+                  key={tabNumber}
+                  onClick={() => handlePagClick(tabNumber)}
+                >
+                  {tabNumber + 1}
+                </button>
+              );
+            })}
           </div>
         </div>
       </Container>

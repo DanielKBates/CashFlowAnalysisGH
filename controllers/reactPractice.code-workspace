@@ -1,13 +1,16 @@
 {
 	"folders": [
 		{
-			"path": "..\\..\\practice\\data-fetcher"
-		},
-		{
 			"path": ".."
 		},
 		{
 			"path": "..\\..\\BootCamp\\01-Class-Content"
+		},
+		{
+			"path": "..\\..\\sandbox\\data-fetcher"
+		},
+		{
+			"path": "..\\..\\sandbox\\untitledEducationWebsite"
 		}
 	],
 	"settings": {}

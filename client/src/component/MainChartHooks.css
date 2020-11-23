@@ -4,10 +4,11 @@ div {
 div::-webkit-scrollbar {
   display: none;
 }
-
+/* Pagination buttons */
 .pagination {
   display: flex;
   justify-content: center;
+  
 }
 
 .pagination-buttons {
@@ -33,6 +34,8 @@ div::-webkit-scrollbar {
 .pagination-wrapper {
   text-align: center;
 }
+
+/* Background */
 .background-container {
   background-image: linear-gradient(to top, #55596f, #303343, #272938);
   background-position: "center";
@@ -40,22 +43,20 @@ div::-webkit-scrollbar {
   background-repeat: "no-repeat";
   min-height: 100%;
 }
+/* Transaction list */
 
-.transaction-list-wrapper {
-  display: block;
-  width: 100%;
-  margin: auto;
-  margin-bottom: 4%;
-  margin-top: 2%;
-  height: 400px;
-  overflow: auto;
-  background-color: #191927;
-  border-radius: 1%;
+
+
+.transaction-li {
+  color: #48c0c0;
+  justify-content: center;
+
 }
-
 .transaction-list {
+  
   list-style-type: none;
-  padding: "0";
+  padding: 3% 5%;
+
 }
 .transaction-list-items {
   padding: 3%;
@@ -64,6 +65,7 @@ div::-webkit-scrollbar {
   text-align: "center";
   color: #48c0c0;
 }
+/* chart */
 .main-content-wrapper {
   padding-top: 3%;
   padding-bottom: 3%;
@@ -71,7 +73,5 @@ div::-webkit-scrollbar {
 .main-content-area {
   background-color: #191927;
   border-radius: 1%;
-}
-.transaction-Li {
-  color: #48c0c0;
+  margin: 2%
 }
