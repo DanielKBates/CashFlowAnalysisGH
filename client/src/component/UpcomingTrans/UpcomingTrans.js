@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./TransactionList.css";
+import "./UpcomingTrans.css";
 
-function TransactionList(props) {
+function UpcomingTrans(props) {
   const [pageCount, setPageCount] = useState(0);
   const [paginationTab, setPaginationTab] = useState(0);
   const paginationButtons = Array.from(Array(pageCount), (i, j) => j);
@@ -26,11 +26,11 @@ function TransactionList(props) {
 
   return (
     <div>
-      <div className="transaction-list-wrapper">
-        <ul className="transaction-list mt-2">
+      <div className="upcoming-list-wrapper">
+        <ul className="upcoming-list mt-2">
           {handlePagination().map((item, i) => (
-            <li className="transaction-list-items" key={i}>
-              <span className="transaction-li">
+            <li className="upcoming-list-items" key={i}>
+              <span className="upcoming-li">
                 {item.startDate} | {item.name} | {item.income ? "+ $" : "- $"}
                 {item.dollarAmt}
               </span>
@@ -57,4 +57,4 @@ function TransactionList(props) {
     </div>
   );
 }
-export default TransactionList;
+export default UpcomingTrans;

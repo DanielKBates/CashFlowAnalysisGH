@@ -1,33 +1,4 @@
-/* transaction list */
-.transaction-list-wrapper {
-    background-color: #191927;
-    border-radius: 2%;
-    margin-left: 4%;
-    margin-right: 4%;
-}
-  
-  
-  .transaction-li {
-    color: #48c0c0;
-    justify-content: center;
-  
-  }
-  .transaction-list {
-    
-    list-style-type: none;
-    padding: 3% 3%;
-  
-  }
-  .transaction-list-items {
-    padding: 3%;
-    border-bottom: 2px solid black;
-    width: 100%;
-    text-align: "center";
-    color: #48c0c0;
-  }
-
-  /* Pagination */
-  .pagination {
+.pagination {
     display: flex;
     justify-content: center;
     
@@ -54,4 +25,31 @@
   }
   .pagination-wrapper {
     text-align: center;
+  }
+
+  .upcoming-list-wrapper {
+    background-color: #191927;
+    border-radius: 2%;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+  
+  
+  .upcoming-li {
+    color: #48c0c0;
+    justify-content: center;
+  
+  }
+  .upcoming-list {
+    
+    list-style-type: none;
+    padding: 3% 3%;
+  
+  }
+  .upcoming-list-items {
+    padding: 3%;
+    border-bottom: 2px solid black;
+    width: 100%;
+    text-align: "center";
+    color: #48c0c0;
   }

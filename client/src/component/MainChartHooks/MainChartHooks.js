@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import TransactionEntryForm from "../TransactionEntryForm/TransactionEntryForm";
 import TransactionList from "../TransactionList/TransactionList";
+import UpcomingTrans from "../UpcomingTrans/UpcomingTrans"
 import "./MainChartHooks.css";
 
 function MainChartHooks(props) {
@@ -96,6 +97,9 @@ function MainChartHooks(props) {
         <Row className="list-row">
           <Col md={6}>
             <TransactionList transactions={transactionData} />
+          </Col>
+          <Col md={6}>
+            <UpcomingTrans transactions={transactionData} />
           </Col>
         </Row>
       </Container>
