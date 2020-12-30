@@ -18,6 +18,12 @@
     padding: 3% 3%;
   
   }
+  .list-title {
+    text-align: center;
+    padding-top: 3%;
+    color: #48c0c0;
+    /* text-decoration: underline #48c0c0; */
+  }
   .transaction-list-items {
     padding: 3%;
     border-bottom: 2px solid black;

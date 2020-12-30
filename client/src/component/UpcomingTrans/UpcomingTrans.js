@@ -4,17 +4,23 @@ import "./UpcomingTrans.css";
 function UpcomingTrans(props) {
   const [pageCount, setPageCount] = useState(0);
   const [paginationTab, setPaginationTab] = useState(0);
+  const [upcomingTransactions, setUpcomingTransactions] =useState([]);
   const paginationButtons = Array.from(Array(pageCount), (i, j) => j);
   const handleDataProp = () => {
-    setPageCount(Math.ceil(props.transactions.length / 4));
-    console.log({props});
-
+    let tempArr =[]
+    for(var i=0;i<props.transactions.length; i++){
+      if(props.transactions[i].reoccuring){
+        tempArr.push(props.transactions[i])
+      }
+    }
+    setPageCount(Math.ceil(tempArr.length / 4));
+    setUpcomingTransactions(tempArr);
   };
   const handlePagClick = (tabNumber) => {
     setPaginationTab(tabNumber);
   };
   const handlePagination = () => {
-    return props.transactions.slice(
+    return upcomingTransactions.slice(
       paginationTab * 4,
       paginationTab * 4 + 4
     );
@@ -22,11 +28,13 @@ function UpcomingTrans(props) {
 
   useEffect(()=> {
       handleDataProp();
+       
   },[props])
 
   return (
     <div>
       <div className="upcoming-list-wrapper">
+        <h5 className="upcoming-title">Upcoming Transactions</h5>
         <ul className="upcoming-list mt-2">
           {handlePagination().map((item, i) => (
             <li className="upcoming-list-items" key={i}>
@@ -50,6 +58,7 @@ function UpcomingTrans(props) {
               >
                 {tabNumber + 1}
               </button>
+              
             );
           })}
         </div>

@@ -7,7 +7,6 @@ function TransactionList(props) {
   const paginationButtons = Array.from(Array(pageCount), (i, j) => j);
   const handleDataProp = () => {
     setPageCount(Math.ceil(props.transactions.length / 4));
-    console.log({props});
 
   };
   const handlePagClick = (tabNumber) => {
@@ -27,6 +26,7 @@ function TransactionList(props) {
   return (
     <div>
       <div className="transaction-list-wrapper">
+        <h5 className="list-title">Transaction History</h5>
         <ul className="transaction-list mt-2">
           {handlePagination().map((item, i) => (
             <li className="transaction-list-items" key={i}>

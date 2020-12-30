@@ -33,6 +33,12 @@
     margin-left: 4%;
     margin-right: 4%;
 }
+.upcoming-title {
+  text-align: center;
+  padding-top: 3%;
+  color: #48c0c0;
+  /* text-decoration: underline #48c0c0; */
+}
   
   
   .upcoming-li {
