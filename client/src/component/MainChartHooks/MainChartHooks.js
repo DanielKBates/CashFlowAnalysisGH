@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Line } from "react-chartjs-2";
 import API from "../../utils/API";
 import Container from "react-bootstrap/Container";
@@ -18,7 +18,7 @@ function MainChartHooks(props) {
       labels: ["1", "2", "3", "4", "5", "6", "7"],
       datasets: [
         {
-          label: "cash, yo",
+          label: "cash",
           data: ["10", "30", "17", "60", "200", "670", "1100"],
           backgroundColor: ["#48c0c0"],
           borderWidth: 4,
@@ -27,21 +27,23 @@ function MainChartHooks(props) {
     });
   };
  
-  const getData = () => {
+  const getData = useCallback( () => {
     let apiResultsArray = [];
-    API.getTransactionData().then((res) => {
+    API.getTransactionData()
+    .then((res) => {
       for (var i = 0; i < res.data.length; i++) {
         apiResultsArray.push(res.data[i]);
       }
       apiResultsArray.sort((a, b) => a.startDate - b.startDate);
       setTransactionData(apiResultsArray);
     });
-  };
+  },[transactionData]
+  );
  
   useEffect(() => {
     getData();
     chart();
-  }, [transactionData]);
+  }, [transactionData.length]);
 
   return (
     <div className="background-container">
@@ -90,7 +92,7 @@ function MainChartHooks(props) {
           </Col>
           <Col md={1}>
             <div className="mt-5 p-0">
-              <TransactionEntryForm />
+              <TransactionEntryForm getData={getData}/>
             </div>
           </Col>
         </Row>

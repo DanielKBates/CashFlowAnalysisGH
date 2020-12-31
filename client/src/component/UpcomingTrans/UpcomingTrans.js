@@ -6,16 +6,8 @@ function UpcomingTrans(props) {
   const [paginationTab, setPaginationTab] = useState(0);
   const [upcomingTransactions, setUpcomingTransactions] =useState([]);
   const paginationButtons = Array.from(Array(pageCount), (i, j) => j);
-  const handleDataProp = () => {
-    let tempArr =[]
-    for(var i=0;i<props.transactions.length; i++){
-      if(props.transactions[i].reoccuring){
-        tempArr.push(props.transactions[i])
-      }
-    }
-    setPageCount(Math.ceil(tempArr.length / 4));
-    setUpcomingTransactions(tempArr);
-  };
+  
+ 
   const handlePagClick = (tabNumber) => {
     setPaginationTab(tabNumber);
   };
@@ -27,9 +19,20 @@ function UpcomingTrans(props) {
   };
 
   useEffect(()=> {
+    const handleDataProp = () => {
+      let tempArr =[]
+      for(var i=0;i<props.transactions.length; i++){
+        if(props.transactions[i].reoccuring){
+          tempArr.push(props.transactions[i])
+        }
+      }
+      setPageCount(Math.ceil(tempArr.length / 4));
+      setUpcomingTransactions(tempArr);
+    };
       handleDataProp();
+      console.log("yo");
        
-  },[props])
+  },[props.transactions.length])
 
   return (
     <div>
